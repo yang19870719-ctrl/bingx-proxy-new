@@ -1,5 +1,8 @@
-import time, requests
+from fastapi import FastAPI
+import requests, time
 from typing import List, Dict
+
+app = FastAPI()   # 一定要有這行
 
 BASE_URL = "https://open-api.bingx.com"
 
@@ -28,6 +31,10 @@ def _spot_klines(symbol: str, interval: str, limit: int) -> List[Dict]:
             "closeTime": int(row[6]) if len(row) > 6 else None
         })
     return out
+
+@app.get("/")
+def root():
+    return {"msg": "BingX Proxy API is running"}
 
 @app.get("/bundle")
 def bundle(
