@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import requests, time
 from typing import List, Dict
 
-app = FastAPI()   # 一定要有這行
+app = FastAPI()
 
 BASE_URL = "https://open-api.bingx.com"
 
